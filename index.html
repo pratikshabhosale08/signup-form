@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="A responsive signup form with email, password, date of birth and account type validation.">
+
+    <title>Signup Form</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <header>
+        <h1>Signup</h1>
+    </header>
+    <main>
+        <section class="signup-container">
+
+            <form id="signupForm" novalidate>
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullname"
+                        name="fullname"
+                        required
+                    >
+                    <small class="error" id="fullnameError"></small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                    >
+                    <small class="error" id="emailError"></small>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                    >
+                    <small class="error" id="passwordError"></small>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        required
+                    >
+                    <small class="error" id="confirmPasswordError"></small>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        name="dob"
+                        required
+                    >
+                    <small class="error" id="dobError"></small>
+                </div>
+                <div class="radio-group">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="role"
+                            value="student"
+                            required
+                        >
+                        Student
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="role"
+                            value="employee"
+                        >
+                        Employee
+                    </label>
+
+                </div>
+
+                <small class="error" id="roleError"></small>
+                <div class="terms">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            name="terms"
+                            required
+                        >
+                        I agree to all the Terms and conditions
+                    </label>
+                </div>
+
+                <small class="error" id="termsError"></small>
+
+                <!-- Submit Button -->
+                <button type="submit">Signup</button>
+
+                <!-- Success Message -->
+                <p id="successMessage"></p>
+
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Signup Form. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
