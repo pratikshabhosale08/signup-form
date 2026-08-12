@@ -33,15 +33,12 @@ main {
     align-items: center;
     padding: 30px 15px;
 }
-
-
 .signup-container {
     width: 100%;
     max-width: 650px;
     padding: 45px 40px;
     background-color: #000;
 }
-
 .signup-container h2 {
     font-size: 30px;
     font-weight: normal;

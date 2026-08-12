@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="A responsive signup form with email, password, date of birth and account type validation.">
+        content="A responsive signup form with email, password, date of birth and user type validation.">
 
     <title>Signup Form</title>
 
@@ -20,66 +20,99 @@
         <h1>Signup</h1>
     </header>
     <main>
-        <section class="signup-container">
+
+        <section class="signup-container" aria-labelledby="signup-title">
+
+            <h2 id="signup-title">Signup</h2>
 
             <form id="signupForm" novalidate>
-
-                <!-- Full Name -->
                 <div class="form-group">
+
                     <label for="fullname">Full Name</label>
+
                     <input
                         type="text"
                         id="fullname"
                         name="fullname"
+                        autocomplete="name"
+                        aria-describedby="fullnameError"
                         required
                     >
-                    <small class="error" id="fullnameError"></small>
+
+                    <p class="error" id="fullnameError"></p>
+
                 </div>
                 <div class="form-group">
+
                     <label for="email">Email</label>
+
                     <input
                         type="email"
                         id="email"
                         name="email"
+                        autocomplete="email"
+                        placeholder="example@gmail.com"
+                        aria-describedby="emailError"
                         required
                     >
-                    <small class="error" id="emailError"></small>
-                </div>
 
-                <!-- Password -->
+                    <p class="error" id="emailError"></p>
+
+                </div>
                 <div class="form-group">
+
                     <label for="password">Password</label>
+
                     <input
                         type="password"
                         id="password"
                         name="password"
+                        autocomplete="new-password"
+                        aria-describedby="passwordError"
                         required
                     >
-                    <small class="error" id="passwordError"></small>
-                </div>
 
-                <!-- Confirm Password -->
+                    <p class="password-hint">
+                        Password must contain more than 8 characters.
+                    </p>
+
+                    <p class="error" id="passwordError"></p>
+
+                </div>
                 <div class="form-group">
+
                     <label for="confirmPassword">Confirm Password</label>
+
                     <input
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"
+                        autocomplete="new-password"
+                        aria-describedby="confirmPasswordError"
                         required
                     >
-                    <small class="error" id="confirmPasswordError"></small>
+
+                    <p class="error" id="confirmPasswordError"></p>
+
                 </div>
                 <div class="form-group">
+
                     <label for="dob">Date of Birth</label>
+
                     <input
                         type="date"
                         id="dob"
                         name="dob"
+                        aria-describedby="dobError"
                         required
                     >
-                    <small class="error" id="dobError"></small>
+
+                    <p class="error" id="dobError"></p>
+
                 </div>
-                <div class="radio-group">
+                <fieldset class="role-group">
+
+                    <legend>Select your role</legend>
 
                     <label>
                         <input
@@ -100,39 +133,52 @@
                         Employee
                     </label>
 
-                </div>
+                </fieldset>
 
-                <small class="error" id="roleError"></small>
+                <p class="error" id="roleError"></p>
                 <div class="terms">
+
                     <label>
+
                         <input
                             type="checkbox"
                             id="terms"
                             name="terms"
+                            aria-describedby="termsError"
                             required
                         >
+
                         I agree to all the Terms and conditions
+
                     </label>
+
                 </div>
 
-                <small class="error" id="termsError"></small>
-
-                <!-- Submit Button -->
-                <button type="submit">Signup</button>
-
-                <!-- Success Message -->
-                <p id="successMessage"></p>
+                <p class="error" id="termsError"></p>
+                <button type="submit">
+                    Signup
+                </button>
+                <p
+                    id="successMessage"
+                    class="success"
+                    role="status"
+                    aria-live="polite"
+                ></p>
 
             </form>
 
         </section>
+
     </main>
 
+
     <footer>
-        <p>&copy; 2026 Signup Form. All rights reserved.</p>
+
+        <p>
+            &copy; 2026 Signup Form. All rights reserved.
+        </p>
+
     </footer>
-
     <script src="script.js"></script>
-
 </body>
 </html>

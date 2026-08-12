@@ -1,4 +1,5 @@
 const form = document.getElementById("signupForm");
+
 const fullname = document.getElementById("fullname");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -9,12 +10,10 @@ const terms = document.getElementById("terms");
 const successMessage = document.getElementById("successMessage");
 
 form.addEventListener("submit", function (event) {
-
     event.preventDefault();
 
     let isValid = true;
 
-    // Clear previous messages
     document.querySelectorAll(".error").forEach(function (error) {
         error.textContent = "";
     });
@@ -26,11 +25,10 @@ form.addEventListener("submit", function (event) {
 
     successMessage.textContent = "";
 
-    // Full Name validation
     if (fullname.value.trim() === "") {
 
         document.getElementById("fullnameError").textContent =
-            "Full name is required.";
+            "Full Name is required.";
 
         fullname.classList.add("invalid");
 
@@ -40,13 +38,9 @@ form.addEventListener("submit", function (event) {
 
         fullname.classList.add("valid");
     }
+    const emailValue = email.value.trim();
 
-
-    // Email validation
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (email.value.trim() === "") {
+    if (emailValue === "") {
 
         document.getElementById("emailError").textContent =
             "Email is required.";
@@ -55,31 +49,30 @@ form.addEventListener("submit", function (event) {
 
         isValid = false;
 
-    } else if (!emailPattern.test(email.value)) {
+    }
+
+    else if (
+        !emailValue.includes("@") ||
+        !emailValue.includes(".")
+    ) {
 
         document.getElementById("emailError").textContent =
-            "Please enter a valid email address.";
+            "Email must contain @ and .";
 
         email.classList.add("invalid");
 
         isValid = false;
 
-    } else {
+    }
+
+    else {
 
         email.classList.add("valid");
     }
+    const passwordValue = password.value;
 
 
-    // Password validation
-    // Minimum 8 characters
-    // At least one uppercase
-    // At least one lowercase
-    // At least one number
-
-    const passwordPattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-    if (password.value === "") {
+    if (passwordValue === "") {
 
         document.getElementById("passwordError").textContent =
             "Password is required.";
@@ -88,22 +81,22 @@ form.addEventListener("submit", function (event) {
 
         isValid = false;
 
-    } else if (!passwordPattern.test(password.value)) {
+    }
+    else if (passwordValue.length <= 8) {
 
         document.getElementById("passwordError").textContent =
-            "Password must be 8+ characters with uppercase, lowercase and number.";
+            "Password must contain more than 8 characters.";
 
         password.classList.add("invalid");
 
         isValid = false;
 
-    } else {
+    }
+
+    else {
 
         password.classList.add("valid");
     }
-
-
-    // Confirm password validation
 
     if (confirmPassword.value === "") {
 
@@ -114,7 +107,9 @@ form.addEventListener("submit", function (event) {
 
         isValid = false;
 
-    } else if (confirmPassword.value !== password.value) {
+    }
+
+    else if (confirmPassword.value !== passwordValue) {
 
         document.getElementById("confirmPasswordError").textContent =
             "Passwords do not match.";
@@ -123,33 +118,32 @@ form.addEventListener("submit", function (event) {
 
         isValid = false;
 
-    } else {
+    }
+
+    else {
 
         confirmPassword.classList.add("valid");
     }
 
-
-    // Date of birth validation
-
     if (dob.value === "") {
 
         document.getElementById("dobError").textContent =
-            "Date of birth is required.";
+            "Date of Birth is required.";
 
         dob.classList.add("invalid");
 
         isValid = false;
 
-    } else {
+    }
+
+    else {
 
         dob.classList.add("valid");
     }
 
-
-    // Radio button validation
-
     const selectedRole =
         document.querySelector('input[name="role"]:checked');
+
 
     if (!selectedRole) {
 
@@ -159,30 +153,24 @@ form.addEventListener("submit", function (event) {
         isValid = false;
     }
 
-
-    // Terms validation
-
     if (!terms.checked) {
 
         document.getElementById("termsError").textContent =
-            "You must agree to the terms and conditions.";
+            "Please accept the Terms and conditions.";
 
         isValid = false;
     }
 
-
-    // Final result
-
     if (isValid) {
 
         successMessage.textContent =
-            "Signup successful! Your account has been created.";
+            "Signup successful! Your form has been submitted.";
 
         form.reset();
 
         document.querySelectorAll("input").forEach(function (input) {
             input.classList.remove("valid");
         });
-    }
 
+    }
 });
